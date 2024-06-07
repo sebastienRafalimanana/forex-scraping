@@ -55,5 +55,4 @@ async def main():
   except aiohttp.ClientError as e:
     print(f"Error: {e}")
     
-loop = asyncio.get_event_loop()
-loop.create_task(main())
+asyncio.run(main())
