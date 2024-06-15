@@ -27,6 +27,17 @@ async def scraping_strategies(document:BeautifulSoup):
     #print(calendar.find_all('tr',class_='calendar__row'))
     calendar.has_attr('title')
 
+    data = []
+    for row in calendar.find_all('tr',class_='calendar__row'):
+        row_data = []
+        for cell in row.find_all('td'):
+            text = cell.text.strip()
+            if cell.find('a'):
+                text = text.replace('Subscribe to', '')
+            row_data.append(text)
+        data.append(row_data)
+
+
     # Extract data 
     # data = []
     # for row in document.find('tbody').find_all('tr')[1:]:
